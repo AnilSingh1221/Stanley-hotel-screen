@@ -2,7 +2,7 @@ import Image from 'next/image';
 import FormCard from './components/form-card';
 import { getForms } from '@/app/utils/api';
 
-export const fetchCache = 'force-no-store';
+export const revalidate = 60
 
 export default async function Home() {
 	const forms = await getForms()

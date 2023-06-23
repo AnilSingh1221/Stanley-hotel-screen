@@ -30,3 +30,10 @@ export const getEventDates = (formDetails: any): any[] => {
 	const {tickets = { events: {options: []}}} = formDetails.fields
 	return tickets.events.options || []
 }
+
+export const showDescription = (eventType: string): boolean => {
+	if (eventType === "multiple") {
+		return process.env.MULTI_EVENT_DISPLAY_DESCRIPTION === 'true'
+	}
+	return process.env.DISPLAY_DESCRIPTION === 'true'
+}

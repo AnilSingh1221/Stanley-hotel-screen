@@ -6,7 +6,9 @@ headers.append("apiKey", process.env.API_KEY as string);
 export const requestOptions = {
 	method: 'GET',
 	headers: headers,
-	refetch: 10,
+	next: {
+		revalidate: 60,
+	}
 }
 
 export const getInventory = async (formId: string) => {

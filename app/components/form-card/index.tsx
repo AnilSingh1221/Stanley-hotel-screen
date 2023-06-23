@@ -4,6 +4,7 @@ import Multiple from '../dates/multiple';
 import Recurring from '../dates/recurring';
 import { getForm, getInventory } from '@/app/utils/api';
 import { getImage, getText, getEventType, getEventDates } from '@/app/utils/fields';
+import Description from '../card/description';
 
 
 interface Props {
@@ -26,7 +27,7 @@ const FormCard: React.FC<Props> = async ({ form }) => {
 			title={formDetails.name}
 			image={image}
 		>	
-			{displayDescription ? <div className="p-3" dangerouslySetInnerHTML={{ __html: text }} /> : null}
+			<Description text={text} type={eventType} />
 			<Multiple
 				eventType={eventType}
 				eventDates={eventDates}
@@ -40,8 +41,6 @@ const FormCard: React.FC<Props> = async ({ form }) => {
 				inventory={inventory}
 				timeZone={formDetails.timeZone}
 				/>
-
-			
 		</Card>
 	)
 }
