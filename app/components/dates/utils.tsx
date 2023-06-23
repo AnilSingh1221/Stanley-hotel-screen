@@ -29,7 +29,7 @@ export const filterInventory = (inventory: any[], timeZone: string) => {
 	const filtered = inventory.filter((item: any) => {
 		// date in form timezone
 		const datetimeStr = item.date + ' ' + item.time + ':00'
-		console.log('datetimeStr', datetimeStr)
+		
 		// convert to UTC equivalent
 		const utcTime = zonedTimeToUtc(datetimeStr, timeZone)
 		return  utcTime >= now

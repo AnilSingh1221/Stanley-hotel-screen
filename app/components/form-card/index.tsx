@@ -1,12 +1,10 @@
 import React, { useMemo } from 'react'
-import { format, addDays } from 'date-fns'
 import Card from '../card';
-
-
-import { getForm, getInventory, requestOptions } from '@/app/utils/api';
 import Multiple from '../dates/multiple';
 import Recurring from '../dates/recurring';
+import { getForm, getInventory } from '@/app/utils/api';
 import { getImage, getText, getEventType, getEventDates } from '@/app/utils/fields';
+
 
 interface Props {
 	form: any;

@@ -1,23 +1,11 @@
 import Image from 'next/image';
 import FormCard from './components/form-card';
-import { requestOptions } from '@/app/utils/api';
+import { getForms } from '@/app/utils/api';
 
-const getData = async () => {
-
-	const res = await fetch("https://api.webconnex.com/v2/public/forms?product=ticketspice.com&pretty=true&sort=asc&status=open&datePublishedBefore=2023-06-18", requestOptions)
-  // Recommendation: handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
-  }
- 
-  const data = await res.json()
-
-	return data.data || []
-}
+export const fetchCache = 'force-no-store';
 
 export default async function Home() {
-	const forms = await getData()
+	const forms = await getForms()
 	
 	const displayLogo = process.env.DISPLAY_LOGO === 'true' ? true : false
 	const displayMainTitle = process.env.DISPLAY_MAIN_TITLE === 'true' ? true : false
