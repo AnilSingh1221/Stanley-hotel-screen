@@ -2,6 +2,7 @@ import * as React from 'react';
 import { format, addDays } from 'date-fns';
 import Status from './status';
 import { formatDateTime, sumInventory } from './utils';
+import ListItem from './list-item';
 
 interface Props {
 	eventType: string
@@ -20,10 +21,7 @@ const Multiple:React.FC<Props> = ({eventDates, eventType, inventory}) => {
 				if (event.attributes?.visible === true) {
 					const {remaining} = sumInventory(event.key, inventory)
 					return (
-
-						<li key={idx} className="p-2">
-							{event.attributes?.label} <Status remaining={remaining} type={eventType} />
-						</li>
+						<ListItem key={idx} label={event.attributes?.label} remaining={remaining} type={eventType} />
 					)
 				}
 			}

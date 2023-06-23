@@ -1,5 +1,5 @@
 import React from 'react';
-import Status from './status';
+import ListItem from './list-item';
 import { filterInventory, formatDateTime } from './utils';
 
 interface Props {
@@ -21,11 +21,7 @@ const Recurring:React.FC<Props> = ({eventDates, eventType, inventory, timeZone})
 		<ul className="text-left divide-y">
 			{filteredInventory.map((event: any, idx: number) => {
 				return (
-					<li key={idx} className="p-2">
-						{formatDateTime(event.date, event.time, event.remaining)} <Status remaining={event.remaining} />
-					</li>
-						
-					)
+					<ListItem key={idx} label={formatDateTime(event.date, event.time, event.remaining)} remaining={event.remaining} type={eventType} />					)
 			})}
 	</ul>)
 }
