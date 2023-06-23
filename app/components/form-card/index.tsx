@@ -5,6 +5,8 @@ import Recurring from '../dates/recurring';
 import { getForm, getInventory } from '@/app/utils/api';
 import { getImage, getText, getEventType, getEventDates } from '@/app/utils/fields';
 import Description from '../card/description';
+import Link from '../card/link';
+import QRCode from '../card/qrcode';
 
 
 interface Props {
@@ -20,13 +22,15 @@ const FormCard: React.FC<Props> = async ({ form }) => {
 	const eventType = getEventType(formDetails)
 	const eventDates = getEventDates(formDetails)
 
-	const displayDescription = process.env.DISPLAY_DESCRIPTION === "true" ? true : false
-
+	const displayLink = process.env.DISPLAY_TICKET_LINK === "true" ? true : false
+	const displayQRCode = process.env.DISPLAY_QRCODE === "true" ? true : false
+	
 	return (
 		<Card
 			title={formDetails.name}
 			image={image}
 		>	
+			{ displayQRCode ? <QRCode url={`https://${formDetails.publishedPath}`} title={formDetails.name} /> : null }
 			<Description text={text} type={eventType} />
 			<Multiple
 				eventType={eventType}
@@ -41,6 +45,8 @@ const FormCard: React.FC<Props> = async ({ form }) => {
 				inventory={inventory}
 				timeZone={formDetails.timeZone}
 				/>
+			
+			{ displayLink ? <Link link={`https://${formDetails.publishedPath}`} label={"Get Tickets"} /> : null }
 		</Card>
 	)
 }
