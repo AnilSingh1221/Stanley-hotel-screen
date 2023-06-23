@@ -40,13 +40,13 @@ export const getForm = async (formId: string) => {
 	return data.data || {}
 }
 
-export const getForms = async () => {
+export const getForms = async (limit: number) => {
 
 	const now = new Date()
 
 	const today = format(now, 'yyyy-MM-dd')
 
-	const res = await fetch(`https://api.webconnex.com/v2/public/forms?product=ticketspice.com&pretty=true&sort=asc&status=open&datePublishedBefore=${today}`, requestOptions)
+	const res = await fetch(`https://api.webconnex.com/v2/public/forms?product=ticketspice.com&pretty=true&sort=asc&status=open&datePublishedBefore=${today}&limit=${limit}`, requestOptions)
   // Recommendation: handle errors
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary

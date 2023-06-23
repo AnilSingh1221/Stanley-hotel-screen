@@ -10,12 +10,12 @@ type Props = {
 }
 
 const Home:React.FC<Props> = async ({searchParams}) => {
-	const forms = await getForms()
-	console.log(searchParams)
+	const limit = searchParams.limit ? parseInt(searchParams.limit) : 100
 	const displayLogo = searchParams.logo === 'true' ? true : false
 	const displayLogoBottom = searchParams.logoBottom === 'true' ? true : false
 	const displayMainTitle = searchParams.title === 'true' ? true : false
 	
+	const forms = await getForms(limit)
 
   return (
 		<div className="text-gray-900 bg-gray-100">
