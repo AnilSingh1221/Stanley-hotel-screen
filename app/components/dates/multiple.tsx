@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { format, addDays } from 'date-fns';
-import Status from './status';
-import { formatDateTime, sumInventory } from './utils';
+import { sumInventory } from './utils';
 import ListItem from './list-item';
 
 interface Props {

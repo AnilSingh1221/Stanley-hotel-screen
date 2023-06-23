@@ -5,11 +5,10 @@ interface Props {
 	title?: string;
 	image?: string;
 	subtitle?: string;
-	qrCode?: string;
 	children?: React.ReactNode;
 }
 
-const Card: React.FC<Props> = ({ title, image, qrCode, children}) => {
+const Card: React.FC<Props> = ({ title, image, children}) => {
 	return (
 		<div className="bg-white rounded-lg shadow-md text-center">
 						<h2 className="lg:text-xl md:text-xl sm:text-xl title uppercase text-center w-full bg-black text-bold text-white p-2 mx-auto">{title}</h2>

@@ -1,4 +1,14 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This project is a stand-alone application that leverages the (webconnex public API)[https://docs.webconnex.io/api/v2/#endpoints] to make requests to a form and inventory and display the published forms with the dates and times and the inventory they have remaining for a given event. 
+
+Note: This was specifically designed with the Stanley Hotel in mind but could be extended to other customers in the future. If you need to do this please initiate the conversation in the `#engineering` channel on slack.
+
+## Architecture
+This is a NextJS app which leans heavily on server-side rendering and react. 
+
+Several components are configurable to either show or hide bases on ENV variables.
+
+Please see the confluence document here for more details: https://webconnex.atlassian.net/wiki/spaces/ENG/pages/1048577/Stanley+Hotel+Inventory+Display
+
 
 ## Getting Started
 
@@ -18,17 +28,8 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+This project uses [`next/dotenv`](https://nextjs.org/docs/basic-features/environment-variables) to load environment variables from a `.env` file.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

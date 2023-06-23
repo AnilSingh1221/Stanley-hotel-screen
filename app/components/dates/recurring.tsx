@@ -4,12 +4,11 @@ import { filterInventory, formatDateTime } from './utils';
 
 interface Props {
 	eventType: string
-	eventDates: any[]
 	inventory: any[]
 	timeZone: string
 }
 
-const Recurring:React.FC<Props> = ({eventDates, eventType, inventory, timeZone}) => {
+const Recurring:React.FC<Props> = ({eventType, inventory, timeZone}) => {
 	
 	if (eventType !== 'recurring') {
 		return null
