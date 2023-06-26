@@ -42,7 +42,7 @@ export const getForm = async (formId: string) => {
 
 export const getForms = async (limit: number) => {
 
-	const now = new Date()
+	const now = addDays(new Date(), 1)
 
 	const today = format(now, 'yyyy-MM-dd')
 

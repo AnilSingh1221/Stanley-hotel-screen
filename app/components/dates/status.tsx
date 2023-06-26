@@ -14,7 +14,7 @@ const Status:React.FC<Props> = ({remaining, type}) => {
 	if (remaining >= limit ) {
 		return <></>
 	}
-
+	
 	return (
 		<span className="font-bold"> - {" "}
 			{
