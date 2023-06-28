@@ -21,7 +21,7 @@ const Home:React.FC<Props> = async ({searchParams}) => {
 		<div className="text-gray-900 bg-gray-100">
 		  <div className="container mx-auto px-0 py-2">
 
-			{ displayLogo && !displayLogoBottom && <Image className="mx-auto h-24 w-48 mb-4" src="/img/logo.png" width={300} height={144} alt="The Stanley Hotel" />}
+			{ displayLogo && !displayLogoBottom && <Image className="mx-auto h-24 w-48 mt-6 mb-4" src="/img/logo.png" width={300} height={144} alt="The Stanley Hotel" />}
 		
 		    { displayMainTitle && <h1 className="text-4xl text-center uppercase font-bold mb-6 text-gray-900">Upcoming Events</h1>}
     
