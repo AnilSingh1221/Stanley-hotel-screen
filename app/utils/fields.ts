@@ -1,8 +1,11 @@
 import defaultImage from '@/public/img/default.png'
 
+// getImage finds the first banner of with the fullWidthType of image
 export const getImage = (formDetails: any): string => {
 	const {header = { children: []}} = formDetails.fields
-	const banner = header.children.find((item: any) => item.type === 'banner' && item.key === 'banner')
+
+	
+	const banner = header.children.find((item: any) => item.type === 'banner' && item.attributes.fullWidthType === 'image')
 	
 	if (!banner?.attributes?.image) {
 		return defaultImage.src
@@ -11,6 +14,7 @@ export const getImage = (formDetails: any): string => {
 	return `https://cdn.uploads.webconnex.com/130981/${banner?.attributes?.image}`
 }
 
+// getText finds the first textParagraph with the key of textParagraph
 export const getText = (formDetails: any): string => {
 	const {header = { children: []}} = formDetails.fields
 	let text = header.children.find((item: any) => item.type === 'textParagraph' && item.key === 'textParagraph')
@@ -21,6 +25,7 @@ export const getText = (formDetails: any): string => {
 	return htmlText?.replace(/style=\".*"/gm,'') || ''
 }
 
+// getEventType returns the event type
 export const getEventType = (formDetails: any): string => {
 	const {tickets = {}} = formDetails.fields
 	return tickets.eventType || ''
