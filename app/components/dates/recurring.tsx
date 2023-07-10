@@ -15,7 +15,13 @@ const Recurring:React.FC<Props> = ({eventType, inventory, timeZone}) => {
 	}
 
 	const filteredInventory = filterInventory(inventory, timeZone)
-	
+	if (filteredInventory.length === 0) {
+		return (
+			<div className="text-center text-gray-500">
+				<p>No dates currently available</p>
+			</div>
+		)
+	}
 	return (
 		<ul className="text-left divide-y">
 			{filteredInventory.map((event: any, idx: number) => {
