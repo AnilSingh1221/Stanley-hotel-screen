@@ -42,5 +42,5 @@ export const filterInventory = (inventory: any[], timeZone: string) => {
 export const formatDateTime = (date: string, time: string, remaining: number) => {
 	const datetimeStr = date + ' ' + time + ':00'
 		
-		return <span className={remaining === 0 ? 'line-through decoration-gray-500' : ''}>{format(new Date(datetimeStr), 'MMM d, yyyy - h:mm a (E)')}</span>
+		return <span className={remaining === 0 ? 'line-through decoration-gray-500' : ''}>{format(new Date(datetimeStr), 'E, MMMM d - h:mm a')}</span>
 }
