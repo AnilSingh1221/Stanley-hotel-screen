@@ -4,7 +4,7 @@ import Card from '../card';
 import Multiple from '../dates/multiple';
 import Recurring from '../dates/recurring';
 import { getForm, getInventory } from '@/app/utils/api';
-import { getImage, getText, getEventType, getEventDates } from '@/app/utils/fields';
+import { getImage, getText, getEventType, getEventDates, getTriggers } from '@/app/utils/fields';
 import Description from '../card/description';
 import Link from '../card/link';
 import QRCode from '../card/qrcode';
@@ -24,7 +24,8 @@ const FormCard: React.FC<Props> = async ({ form, searchParams }) => {
 	const text = getText(formDetails)
 	const eventType = getEventType(formDetails)
 	const eventDates = getEventDates(formDetails)
-
+	const triggers = getTriggers(formDetails)
+	console.log(triggers)
 	const displayLink = link === "true" ? true : false
 	const displayQRCode = qrcode === "true" ? true : false
 	
@@ -40,7 +41,7 @@ const FormCard: React.FC<Props> = async ({ form, searchParams }) => {
 				eventDates={eventDates}
 				inventory={inventory}
 				timeZone={formDetails.timeZone}
-				
+				triggers={triggers}
 				/>
 			
 			<Recurring

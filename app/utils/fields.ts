@@ -42,3 +42,8 @@ export const showDescription = (eventType: string): boolean => {
 	}
 	return process.env.DISPLAY_DESCRIPTION === 'true'
 }
+
+export const getTriggers = (formDetails: any): any[] => {
+	const {triggers = []} = formDetails.fields
+	return triggers
+}
