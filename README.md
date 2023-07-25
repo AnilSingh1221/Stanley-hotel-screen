@@ -32,4 +32,12 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 This project uses [`next/dotenv`](https://nextjs.org/docs/basic-features/environment-variables) to load environment variables from a `.env` file.
 
+## URL Formats
+
+### Ordering of Element
+
+If you want to have an page move up to the front of the listing you can append any number of page IDs to the URL. For example
+
+`http://stanley-hotel.vercel.app/?limit=6&logo=true&order=608698&order=596547&order=596631&order=596627&order=596630&order=603469`
+
 
