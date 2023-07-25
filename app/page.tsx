@@ -3,6 +3,8 @@ import FormCard from './components/form-card';
 import { getForms } from '@/app/utils/api';
 
 export const revalidate = 60
+// no cache
+
 
 type Props = {
 	searchParams: any

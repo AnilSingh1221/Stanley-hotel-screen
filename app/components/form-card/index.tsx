@@ -25,7 +25,6 @@ const FormCard: React.FC<Props> = async ({ form, searchParams }) => {
 	const eventType = getEventType(formDetails)
 	const eventDates = getEventDates(formDetails)
 	const triggers = getTriggers(formDetails)
-	console.log(triggers)
 	const displayLink = link === "true" ? true : false
 	const displayQRCode = qrcode === "true" ? true : false
 	

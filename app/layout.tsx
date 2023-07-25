@@ -1,6 +1,8 @@
 import './globals.css'
 import { Lato } from 'next/font/google'
 
+export const fetchCache = 'force-no-store';
+
 const lato = Lato({ weight: "300", subsets: ['latin'] })
 
 export const metadata = {
@@ -16,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
 			<link rel="icon" href="/favicon.ico" sizes="any" />
-			<meta httpEquiv="refresh" content="30" />
+			{/* <meta httpEquiv="refresh" content="30" /> */}
 			
       <body className={lato.className} >{children}</body>
     </html>

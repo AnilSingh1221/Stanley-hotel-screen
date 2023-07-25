@@ -47,3 +47,36 @@ export const getTriggers = (formDetails: any): any[] => {
 	const {triggers = []} = formDetails.fields
 	return triggers
 }
+
+export const checkActions = (item: any, triggers: any[]) : boolean => {
+
+	let retVal = false
+	// get all the triggers that match on the condition path
+	const matchingTriggers = triggers.filter((trigger: any) => {
+		// check the condition path against the event
+		const conditions = trigger.conditions.find((condition: any) => {
+			return condition.path.includes(item.event)
+		})
+
+		return conditions || false
+	})
+
+	if (matchingTriggers.length === 0) {
+		return true
+	}
+
+	matchingTriggers.forEach((trigger: any) => {
+		// check the action path against the event
+		const action = trigger.actions.find((action: any) => {
+			return action.paths.includes(item.path)
+		})
+
+		if (action?.name === 'show') {
+			retVal = true
+			return
+		}
+		
+	})
+	
+	return retVal
+}

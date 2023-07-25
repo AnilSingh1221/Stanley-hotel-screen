@@ -1,0 +1,602 @@
+{
+  "type": "form",
+  "attributes": { "visible": true },
+  "triggers": [
+    {
+      "conditions": [
+        { "path": "tickets.events.september6th2023", "name": "isSelected" }
+      ],
+      "actions": [{ "paths": ["tickets.adult"], "name": "show" }],
+      "created": "2023-07-17T20:49:24.728Z",
+      "all": true
+    },
+    {
+      "conditions": [
+        { "path": "tickets.events.september9th2023", "name": "isSelected" }
+      ],
+      "actions": [{ "paths": ["tickets.generalAdmission"], "name": "show" }],
+      "created": "2023-07-18T20:25:14.327Z"
+    },
+    {
+      "conditions": [
+        { "path": "tickets.events.september7th2023", "name": "isSelected" }
+      ],
+      "actions": [{ "paths": ["tickets.adult"], "name": "show" }],
+      "created": "2023-07-18T20:28:18.155Z"
+    },
+    {
+      "conditions": [
+        { "path": "tickets.events.september8th2023", "name": "isSelected" }
+      ],
+      "actions": [{ "paths": ["tickets.adult"], "name": "show" }],
+      "created": "2023-07-18T20:29:40.882Z"
+    }
+  ],
+  "header": {
+    "type": "header",
+    "key": "header",
+    "attributes": { "visible": true },
+    "children": [
+      {
+        "type": "banner",
+        "key": "banner",
+        "attributes": {
+          "background_image_placement": "center center",
+          "label": "Banner",
+          "text": "<p style=\"text-align: center; font-size: 50;\"><br></p><p style=\"text-align: center; font-size: 50;\"><img src=\"https://s3.amazonaws.com/uploads.webconnex.com/130981%2F1686777536798-ftatsh_PNG.png\" style=\"width: 801px;\" class=\"fr-fic fr-dib\"></p>",
+          "visible": true,
+          "fullWidthType": "image",
+          "image": "img_1423-2000x1200.jpeg",
+          "fullWidth": true,
+          "minHeight": 400,
+          "backgroundColor": "rgba(121,116,116,1)"
+        }
+      },
+      {
+        "type": "textParagraph",
+        "key": "textParagraph",
+        "attributes": {
+          "label": "Paragraph Text",
+          "visible": true,
+          "text": "<p style=\"text-align: center;\"><span style=\"font-size: 30px;\">Experience the soulful voice and confessional lyrics that have made Frank Turner an international rock legend at the iconic Stanley Hotel!</span></p><p style=\"text-align: center;\"><span style=\"font-size: 30px;\">Doors Open at 7pm / Show Starts at 8pm</span></p>"
+        }
+      }
+    ]
+  },
+  "tickets": {
+    "type": "tickets",
+    "key": "tickets",
+    "attributes": {
+      "advancedOptions": true,
+      "categories": true,
+      "hideFees": true,
+      "inventory": "",
+      "limitedInventory": false,
+      "showInventory": false,
+      "visible": true
+    },
+    "eventType": "multiple",
+    "events": {
+      "type": "ticketEvents",
+      "key": "events",
+      "attributes": { "label": "Event List", "visible": true },
+      "options": [
+        {
+          "key": "september6th2023",
+          "attributes": { "label": "September 6th, 2023", "visible": true }
+        },
+        {
+          "key": "september7th2023",
+          "attributes": { "label": "September 7th, 2023", "visible": true }
+        },
+        {
+          "key": "september8th2023",
+          "attributes": { "label": "September 8th, 2023", "visible": true }
+        },
+        {
+          "key": "september9th2023",
+          "attributes": { "label": "September 9th, 2023", "visible": true }
+        }
+      ]
+    },
+    "date": {
+      "type": "ticketDate",
+      "key": "date",
+      "attributes": {
+        "label": "Ticket Date Selection",
+        "blackoutDates": [],
+        "bottomYear": -10,
+        "dateFormat": "date-picker",
+        "days": [true, true, true, true, true, true, true],
+        "eventDates": [],
+        "required": true,
+        "topYear": 10,
+        "visible": true
+      }
+    },
+    "timeslot": {
+      "type": "ticketTimeslot",
+      "key": "timeslot",
+      "attributes": {
+        "label": "Ticket Time Slot",
+        "duration": 60,
+        "visible": true
+      },
+      "options": []
+    },
+    "levels": [
+      {
+        "type": "ticketLevel",
+        "key": "adult",
+        "attributes": {
+          "amount": "69.50",
+          "availability": "all",
+          "boxofficeFees": [],
+          "boxofficePrice": "",
+          "boxofficePricing": false,
+          "description": "One Seated General Admission Ticket / Age Restrictions 21+ / All tickets are Non-Refundable",
+          "excludeCapacity": false,
+          "hidePrice": false,
+          "inventory": "500",
+          "label": "General Admission",
+          "limitedInventory": true,
+          "required": true,
+          "selection": "1-8",
+          "visible": true,
+          "showInventory": false
+        },
+        "children": [],
+        "fee": {
+          "type": "lineItem",
+          "key": "fee",
+          "attributes": { "label": "Fee", "visible": true },
+          "fees": []
+        },
+        "category": "category"
+      },
+      {
+        "type": "ticketLevel",
+        "key": "generalAdmission",
+        "attributes": {
+          "label": "General Admission",
+          "required": true,
+          "availability": "all",
+          "boxofficePricing": false,
+          "boxofficePrice": "",
+          "boxofficeFees": [],
+          "visible": true,
+          "description": "One Seated General Admission Ticket  / Age Restrictions 21+ / All tickets are Non-Refundable",
+          "amount": "75",
+          "hidePrice": false,
+          "limitedInventory": true,
+          "inventory": "275",
+          "excludeCapacity": false
+        },
+        "children": [],
+        "fee": {
+          "type": "lineItem",
+          "key": "fee",
+          "attributes": { "label": "Fee", "visible": true },
+          "fees": []
+        },
+        "category": "category2"
+      }
+    ],
+    "categories": [
+      {
+        "backgroundColor": "rgba(133,75,75,1)",
+        "key": "category",
+        "label": "Stanley Hotel Concert Hall",
+        "open": true
+      },
+      {
+        "backgroundColor": "rgba(173,71,71,1)",
+        "key": "category2",
+        "label": "Pavillion",
+        "open": true
+      }
+    ]
+  },
+  "registrants": {
+    "type": "registrants",
+    "key": "registrants",
+    "attributes": { "multireg": false, "paged": false, "visible": true },
+    "children": [
+      {
+        "type": "breakHr",
+        "key": "breakHr",
+        "attributes": {
+          "breakType": "line-break-solid",
+          "breakfield": "line-break-solid",
+          "label": "Line Break",
+          "visible": true
+        }
+      },
+      {
+        "type": "couponCode",
+        "key": "couponCode",
+        "attributes": {
+          "label": "Coupon Code",
+          "required": false,
+          "textFieldType": "short-response",
+          "visible": true
+        }
+      },
+      {
+        "type": "subtotal",
+        "key": "subtotal",
+        "attributes": { "aggregate": true, "label": "Total", "visible": true }
+      },
+      {
+        "type": "breakHr",
+        "key": "breakHr2",
+        "attributes": {
+          "breakType": "line-break-solid",
+          "breakfield": "line-break-solid",
+          "label": "Line Break",
+          "visible": true
+        }
+      },
+      {
+        "type": "tos",
+        "key": "terms",
+        "attributes": {
+          "agreeText": "All tickets are final sale and cannot be exchanged or refunded. In the case of an event cancellation without a rescheduled date, a full refund will be automatically issued to each patron on the credit card used to purchase. By purchasing a ticket to this event, you agree to this purchase policy. Before purchasing your tickets, we urge you to confirm the title, time, and location of the event.\n\n**This is a 21+ Event",
+          "fingerSignature": false,
+          "label": "Terms",
+          "visible": true
+        }
+      }
+    ]
+  },
+  "billing": {
+    "type": "billing",
+    "key": "billing",
+    "attributes": {
+      "collectProcessingFee": false,
+      "label": "Billing",
+      "recaptcha": false,
+      "required": true,
+      "visible": true
+    },
+    "header": {
+      "type": "textHeading",
+      "key": "billing-header",
+      "attributes": {
+        "altText": "Almost done. Where should we send the confirmation?",
+        "headingAlignment": "text-center",
+        "headingSize": "small-heading",
+        "label": "Heading Text",
+        "text": "Billing Information",
+        "visible": true
+      }
+    },
+    "name": {
+      "type": "name",
+      "key": "name",
+      "attributes": { "label": "Name", "visible": true, "required": true },
+      "firstName": {
+        "type": "nameField",
+        "key": "first",
+        "attributes": {
+          "label": "First Name",
+          "required": true,
+          "textFieldType": "short-response",
+          "visible": true
+        }
+      },
+      "lastName": {
+        "type": "nameField",
+        "key": "last",
+        "attributes": {
+          "label": "Last Name",
+          "required": true,
+          "textFieldType": "short-response",
+          "visible": true
+        }
+      },
+      "mi": {
+        "type": "nameField",
+        "key": "middleInitial",
+        "attributes": {
+          "label": "M.I.",
+          "required": false,
+          "textFieldType": "short-response",
+          "visible": true
+        }
+      }
+    },
+    "company": {
+      "type": "companyName",
+      "key": "company",
+      "attributes": {
+        "label": "Organization Name",
+        "textFieldType": "short-response",
+        "visible": false,
+        "required": false
+      }
+    },
+    "paymentMethod": {
+      "type": "paymentMethod",
+      "key": "paymentMethod",
+      "attributes": { "label": "Payment Method", "visible": true },
+      "card": {
+        "key": "card",
+        "attributes": {
+          "label": "Credit Card",
+          "selected": true,
+          "visible": true
+        }
+      },
+      "check": {
+        "key": "check",
+        "attributes": { "label": "Check", "selected": false, "visible": false }
+      },
+      "offline": {
+        "key": "offline",
+        "attributes": { "label": "Offline", "visible": false }
+      },
+      "preauth": {
+        "key": "preauth",
+        "attributes": { "label": "Pre Register", "visible": false }
+      }
+    },
+    "card": {
+      "type": "creditCard",
+      "key": "card",
+      "attributes": { "label": "Credit Card", "visible": true },
+      "cardNumber": {
+        "type": "cardNumber",
+        "key": "cardNumber",
+        "attributes": {
+          "label": "Card Number",
+          "required": true,
+          "textFieldType": "short-response",
+          "visible": true
+        }
+      },
+      "expMonth": {
+        "type": "expMonth",
+        "key": "expMonth",
+        "attributes": {
+          "label": "Exp. Month",
+          "required": true,
+          "visible": true
+        }
+      },
+      "expYear": {
+        "type": "expYear",
+        "key": "expYear",
+        "attributes": {
+          "label": "Exp. Year",
+          "required": true,
+          "visible": true
+        }
+      },
+      "cvvCode": {
+        "type": "cvv",
+        "key": "cvvCode",
+        "attributes": {
+          "label": "CVV2",
+          "required": true,
+          "textFieldType": "short-response",
+          "visible": true
+        }
+      },
+      "saveCard": {
+        "type": "checkbox",
+        "key": "saveCard",
+        "attributes": {
+          "label": "Checkbox",
+          "required": false,
+          "visible": true
+        }
+      },
+      "password": {
+        "type": "setPassword",
+        "key": "password",
+        "attributes": {
+          "confirm": true,
+          "label": "Set Password",
+          "required": false,
+          "visible": true
+        }
+      }
+    },
+    "check": {
+      "type": "check",
+      "key": "check",
+      "attributes": { "label": "Check", "visible": true },
+      "bankName": {
+        "type": "textField",
+        "key": "bankName",
+        "attributes": {
+          "label": "Bank Name",
+          "required": true,
+          "textFieldType": "short-response",
+          "visible": true
+        }
+      },
+      "accountType": {
+        "type": "accountType",
+        "key": "accountType",
+        "attributes": { "label": "Account Type", "visible": true },
+        "checking": {
+          "key": "checking",
+          "attributes": {
+            "label": "Checking",
+            "selected": true,
+            "visible": true
+          }
+        },
+        "savings": {
+          "key": "savings",
+          "attributes": { "label": "Savings", "visible": true }
+        }
+      },
+      "routingNumber": {
+        "type": "routingNumber",
+        "key": "routingNumber",
+        "attributes": {
+          "label": "Routing Number",
+          "required": true,
+          "textFieldType": "short-response",
+          "visible": true
+        }
+      },
+      "accountNumber": {
+        "type": "accountNumber",
+        "key": "accountNumber",
+        "attributes": {
+          "label": "Account Number",
+          "required": true,
+          "textFieldType": "short-response",
+          "visible": true
+        },
+        "double": {
+          "type": "accountNumberDouble",
+          "key": "double",
+          "attributes": {
+            "label": "Confirm Account Number",
+            "required": true,
+            "textFieldType": "short-response",
+            "visible": true
+          }
+        }
+      }
+    },
+    "address": {
+      "type": "address",
+      "key": "address",
+      "attributes": {
+        "country": true,
+        "label": "Address",
+        "visible": true,
+        "required": true
+      },
+      "street1": {
+        "type": "addressSubField",
+        "key": "street1",
+        "attributes": {
+          "label": "Street Address",
+          "required": true,
+          "textFieldType": "short-response",
+          "visible": true
+        }
+      },
+      "street2": {
+        "type": "addressSubField",
+        "key": "street2",
+        "attributes": {
+          "label": "Street Address 2",
+          "required": false,
+          "textFieldType": "short-response",
+          "visible": true
+        }
+      },
+      "city": {
+        "type": "addressSubField",
+        "key": "city",
+        "attributes": {
+          "label": "City",
+          "required": true,
+          "textFieldType": "short-response",
+          "visible": true
+        }
+      },
+      "state": {
+        "type": "stateField",
+        "key": "state",
+        "attributes": {
+          "label": "State",
+          "required": true,
+          "textFieldType": "short-response",
+          "visible": true
+        }
+      },
+      "postalCode": {
+        "type": "addressSubField",
+        "key": "postalCode",
+        "attributes": {
+          "label": "ZIP/Postal Code",
+          "required": true,
+          "textFieldType": "short-response",
+          "visible": true
+        }
+      },
+      "country": {
+        "type": "addressSubField",
+        "key": "country",
+        "attributes": {
+          "label": "Country",
+          "required": true,
+          "textFieldType": "short-response",
+          "value": "US",
+          "visible": true
+        }
+      }
+    },
+    "email": {
+      "type": "email",
+      "key": "email",
+      "attributes": {
+        "label": "Email",
+        "optIn": false,
+        "placeholder": "Email Address",
+        "textFieldType": "short-response",
+        "visible": true,
+        "required": true
+      },
+      "double": {
+        "type": "emailDouble",
+        "key": "double",
+        "attributes": {
+          "label": "Confirm Email",
+          "placeholder": "Confirm Email Address",
+          "required": true,
+          "textFieldType": "short-response",
+          "visible": false
+        }
+      },
+      "optIn": false
+    },
+    "phone": {
+      "type": "phone",
+      "key": "phone",
+      "attributes": {
+        "label": "Phone Number",
+        "phoneFormat": "int-phone",
+        "textFieldType": "short-response",
+        "visible": true,
+        "required": true
+      }
+    }
+  },
+  "submit": {
+    "type": "submit",
+    "key": "submit",
+    "attributes": {
+      "background": "#eeeeee",
+      "fontSize": "16px",
+      "label": "Purchase Tickets",
+      "visible": true
+    }
+  },
+  "footer": {
+    "type": "footer",
+    "key": "footer",
+    "attributes": { "visible": true },
+    "children": [
+      {
+        "type": "banner",
+        "key": "banner",
+        "attributes": {
+          "background_image_placement": "center center",
+          "label": "Banner",
+          "visible": true,
+          "text": "<table style=\"width: 100%;\"><tbody><tr><td style=\"width: 33.3333%;\"><a href=\"https://www.facebook.com/thestanleyhotel/\" rel=\"noopener noreferrer\" target=\"_blank\"><img src=\"https://s3.amazonaws.com/uploads.webconnex.com/130981%2F1686849742982-2021_Facebook_icon.svg.png\" style=\"width: 43px;\" class=\"fr-fic fr-dib\"></a></td><td style=\"width: 33.3333%;\"><img src=\"https://s3.amazonaws.com/uploads.webconnex.com/130981%2F1686849753404-Logo_of_Twitter.svg.png\" style=\"width: 50px;\" class=\"fr-fic fr-dib\"></td><td style=\"width: 33.3333%;\"><a href=\"https://www.instagram.com/thestanleyhotel/?hl=en\" rel=\"noopener noreferrer\" target=\"_blank\"><img src=\"https://s3.amazonaws.com/uploads.webconnex.com/130981%2F1686849760804-2048px-Instagram_icon.png\" style=\"width: 50px;\" class=\"fr-fic fr-dib\"></a></td></tr></tbody></table>"
+        }
+      }
+    ]
+  }
+}

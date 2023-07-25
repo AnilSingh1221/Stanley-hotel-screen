@@ -49,7 +49,7 @@ export const getForms = async (limit: number, formOrder: number[]) => {
 	
 	const res = await fetch(url, requestOptions)
   if (!res.ok) {
-    throw new Error('Failed to fetch data')
+		throw new Error(`${res.status} - ${res.statusText}`)
   }
  
   const data = await res.json()
