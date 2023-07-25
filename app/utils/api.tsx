@@ -40,7 +40,7 @@ export const getForm = async (formId: string) => {
 	return data.data || {}
 }
 
-export const getForms = async (limit: number) => {
+export const getForms = async (limit: number, formOrder: number[]) => {
 
 	const now = addDays(new Date(), 3)
 
@@ -54,27 +54,16 @@ export const getForms = async (limit: number) => {
  
   const data = await res.json()
 
-	return orderForms(data.data) || []
+	return orderForms(data.data, formOrder) || []
 }
 
-
-// This specifies the order of the forms
-// any forms not in this array will be sorted by published date
-// and added to the end of the array
-const formOrder = [
-	596547, // historic day tour
-	596631, // night tour
-	596627, // shining tour
-	596630, // kings cottage tour
-	603469, // the vault tour
-	608698, // frank turner
-]
-
+// 596547,596631,596627,596630,603469,608698
 // orderForms based on form order, move any matches to the end of the array
-export const orderForms = (forms: any) => {
+export const orderForms = (forms: any, formOrder: number[] | string[] = []) => {
 	const orderedForms = forms.sort((a: any, b: any) => {
-		const aIndex = formOrder.indexOf(a.id)
-		const bIndex = formOrder.indexOf(b.id)
+		var orderArray = formOrder.map(Number);
+		const aIndex = orderArray.indexOf(a.id)
+		const bIndex = orderArray.indexOf(b.id)
 		
 		if (aIndex === -1 && bIndex === -1) {
 			return 0
