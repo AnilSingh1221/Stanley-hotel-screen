@@ -25,12 +25,6 @@ const Recurring:React.FC<Props> = ({eventType, inventory, timeZone}) => {
 	return (
 		<ul className="text-left divide-y">
 			{filteredInventory.map((event: any, idx: number) => {
-				// Remove for testing
-				if (event.time >= '10:00:00' && event.time <= '12:00:00') {
-					event.remaining = 0
-				}	else if (event.time >= '12:00:01' && event.time <= '14:00:00')	{
-					event.remaining = 5
-				}
 				return (
 					<ListItem key={idx} label={formatDateTime(event.date, event.time, event.remaining)} remaining={event.remaining} type={eventType} />					)
 			})}
