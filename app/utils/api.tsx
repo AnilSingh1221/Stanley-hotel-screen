@@ -45,7 +45,7 @@ export const getForms = async (limit: number, formOrder: number[]) => {
 	const now = addDays(new Date(), 3)
 
 	const today = format(now, 'yyyy-MM-dd')
-	const url = `https://api.webconnex.com/v2/public/forms?product=ticketspice.com&pretty=true&sort=asc&status=open&datePublishedBefore=${today}&limit=${limit}`
+	const url = `https://api.webconnex.com/v2/public/forms?product=ticketspice.com&pretty=true&sort=asc&status=open&datePublishedBefore=${today}&limit=1000`
 	
 	const res = await fetch(url, requestOptions)
   if (!res.ok) {
@@ -54,12 +54,12 @@ export const getForms = async (limit: number, formOrder: number[]) => {
  
   const data = await res.json()
 
-	return orderForms(data.data, formOrder) || []
+	return orderForms(data.data, limit, formOrder) || []
 }
 
 // 596547,596631,596627,596630,603469,608698
 // orderForms based on form order, move any matches to the end of the array
-export const orderForms = (forms: any, formOrder: number[] | string[] = []) => {
+export const orderForms = (forms: any, limit: number = 0, formOrder: number[] | string[] = []) => {
 	const orderedForms = forms.sort((a: any, b: any) => {
 		var orderArray = formOrder.map(Number);
 		const aIndex = orderArray.indexOf(a.id)
@@ -79,6 +79,8 @@ export const orderForms = (forms: any, formOrder: number[] | string[] = []) => {
 		
 		return aIndex - bIndex
 	})
-	
+	if (limit > 0) {
+		return orderedForms.slice(0, limit)
+	}
 	return orderedForms
 }
