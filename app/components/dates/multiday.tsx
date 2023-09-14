@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { sumInventory } from './utils';
+import { formatDate, formatDateTime, sumInventory } from './utils';
 import ListItem from './list-item';
 import { match } from 'assert';
 import { checkActions } from '@/app/utils/fields';
@@ -12,11 +12,13 @@ interface Props {
 	triggers: any[]
 }
 
-const Multiple:React.FC<Props> = ({eventDates, eventType, inventory, triggers}) => {
-	
-	if (eventType !== 'multiple') {
+const Multiday:React.FC<Props> = ({eventDates, eventType, inventory, triggers}) => {
+	if (eventType !== 'multiday') {
 		return null
 	}
+
+	
+	console.log("MultiDay", eventDates, inventory)
 
 	// Filter out actions as needed
 	inventory = inventory.filter((item: any) => {
@@ -26,11 +28,11 @@ const Multiple:React.FC<Props> = ({eventDates, eventType, inventory, triggers}) 
 	return (
 		<ul className="text-left divide-y">
 			{eventDates.map((event: any, idx: number) => {
-				if (event.attributes?.visible === true) {
+				if (event.visible === true) {
 					const {remaining} = sumInventory(event.key, inventory)
 					
 					return (
-						<ListItem key={idx} label={event.attributes?.label} remaining={remaining} type={eventType} />
+						<ListItem key={idx} label={formatDate(event.date, '', event.remaining)} remaining={remaining} type={eventType} />
 					)
 				}
 			}
@@ -39,4 +41,4 @@ const Multiple:React.FC<Props> = ({eventDates, eventType, inventory, triggers}) 
 	</ul>)
 }
 
-export default Multiple
+export default Multiday

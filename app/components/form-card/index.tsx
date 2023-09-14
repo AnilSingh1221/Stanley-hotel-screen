@@ -8,6 +8,7 @@ import { getImage, getText, getEventType, getEventDates, getTriggers } from '@/a
 import Description from '../card/description';
 import Link from '../card/link';
 import QRCode from '../card/qrcode';
+import Multiday from '../dates/multiday';
 
 interface Props {
 	form: any;
@@ -19,7 +20,7 @@ const FormCard: React.FC<Props> = async ({ form, searchParams }) => {
 	const {qrcode,link } = searchParams
 	// get the form and inventory
 	const [formDetails, inventory] = await Promise.all([getForm(form.id), getInventory(form.id)])
-	
+
 	const image = getImage(formDetails)
 	const text = getText(formDetails)
 	const eventType = getEventType(formDetails)
@@ -36,6 +37,14 @@ const FormCard: React.FC<Props> = async ({ form, searchParams }) => {
 			{ displayQRCode && <QRCode url={`https://${formDetails.publishedPath}`} title={formDetails.name} />}
 			<Description text={text} type={eventType} />
 			<Multiple
+				eventType={eventType}
+				eventDates={eventDates}
+				inventory={inventory}
+				timeZone={formDetails.timeZone}
+				triggers={triggers}
+				/>
+
+			<Multiday
 				eventType={eventType}
 				eventDates={eventDates}
 				inventory={inventory}

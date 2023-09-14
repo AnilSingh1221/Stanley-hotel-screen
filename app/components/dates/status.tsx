@@ -11,7 +11,7 @@ const Status:React.FC<Props> = ({remaining, type}) => {
 		type === "multiple" ? (process.env.MULTI_EVENT_SELLOUT_WARNING_LIMIT || 100) : (process.env.SELLOUT_WARNING_LIMIT || 10)
 		) as number
 	
-	if (remaining >= limit ) {
+	if (remaining >= limit || remaining < 0) {
 		return <></>
 	}
 	

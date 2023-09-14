@@ -18,7 +18,7 @@ export const sumInventory = (ticketKey: string, inventory: any[]): TotalInventor
 		acc.sold += item.sold
 		acc.remaining += item.remaining
 		return acc
-	}, {quantity: 0, sold: 0, remaining: 0})
+	}, {quantity: 0, sold: 0, remaining: -1})
 	return totalInventory
 }
 
@@ -43,4 +43,10 @@ export const formatDateTime = (date: string, time: string, remaining: number) =>
 	const datetimeStr = date + ' ' + time + ':00'
 		
 		return <span className={remaining === 0 ? 'line-through decoration-gray-500' : ''}>{format(new Date(datetimeStr), 'E, MMMM d - h:mm a')}</span>
+}
+
+export const formatDate = (date: string, time: string, remaining: number) => {
+	const datetimeStr = date
+		
+		return <span className={remaining === 0 ? 'line-through decoration-gray-500' : ''}>{format(new Date(datetimeStr), 'E, MMMM d')}</span>
 }

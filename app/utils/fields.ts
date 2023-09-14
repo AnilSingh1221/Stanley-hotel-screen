@@ -4,14 +4,19 @@ import defaultImage from '@/public/img/default.png'
 export const getImage = (formDetails: any): string => {
 	const {header = { children: []}} = formDetails.fields
 
+	let banner = header.children.find((item: any) => item.type === 'banner' && item.attributes.fullWidthType === 'image')
 	
-	const banner = header.children.find((item: any) => item.type === 'banner' && item.attributes.fullWidthType === 'image')
-	
-	if (!banner?.attributes?.image) {
-		return defaultImage.src
+	if (banner?.attributes?.image) {
+	 return `https://cdn.uploads.webconnex.com/130981/${banner?.attributes?.image}`
 	}
 
-	return `https://cdn.uploads.webconnex.com/130981/${banner?.attributes?.image}`
+	banner = header.children.find((item: any) => item.type === 'picture')
+
+	if (!banner?.attributes?.urls['0']) {
+		return defaultImage.src
+	}
+	
+	return `https://cdn.uploads.webconnex.com/130981/${banner?.attributes?.urls['0']}`
 }
 
 // getText finds the first textParagraph with the key of textParagraph
@@ -32,8 +37,11 @@ export const getEventType = (formDetails: any): string => {
 }
 
 export const getEventDates = (formDetails: any): any[] => {
-	const {tickets = { events: {options: []}}} = formDetails.fields
-	return tickets.events.options || []
+	const {tickets = { date: { attributes: { eventDates: []}}, events: {options: []}}} = formDetails.fields
+	if (tickets.eventType === 'multiday') {
+		return tickets.date.attributes.eventDates || []
+	}
+	return tickets.events.options || tickets.date.eventDates || []
 }
 
 export const showDescription = (eventType: string): boolean => {
