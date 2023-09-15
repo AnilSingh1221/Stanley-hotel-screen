@@ -11,13 +11,15 @@ export const requestOptions = {
 	}
 }
 
-export const getInventory = async (formId: string) => {
+export const getInventory = async (formId: string, eventType: string) => {
 	// get inventory for the next 5 days
 	const fromDate = new Date()
 	// five days from now
 	const toDate = addDays(fromDate, 5)
-	const params = `?from=${format(fromDate, 'yyyy-MM-dd')}&to=${format(toDate, 'yyyy-MM-dd')}&limit=10`
-	
+	let params = '?limit=100'
+	if (eventType !== 'multiday') {
+		params = `${params}&from=${format(fromDate, 'yyyy-MM-dd')}&to=${format(toDate, 'yyyy-MM-dd')}`
+	}
 	const res = await fetch(`https://api.webconnex.com/v2/public/forms/${formId}/ticket-inventory${params}`, requestOptions)
 	
 	if (!res.ok) {

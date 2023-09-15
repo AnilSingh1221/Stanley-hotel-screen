@@ -23,7 +23,7 @@ export const sumInventory = (ticketKey: string, inventory: any[]): TotalInventor
 	return totalInventory
 }
 
-export const filterInventory = (inventory: any[], timeZone: string) => {
+export const filterInventory = (inventory: any[], timeZone: string, triggers: any[] = []) => {
 	const limit: number = (process.env.DISPLAY_COUNT || 16) as number
 	// filter out any past times - date and time our past
 	const now = new Date()
@@ -35,7 +35,13 @@ export const filterInventory = (inventory: any[], timeZone: string) => {
 		const utcTime = zonedTimeToUtc(datetimeStr, timeZone)
 		return  utcTime >= now
 	})
-
+	// filter hidden items
+	.filter((item: any) => {
+		if (triggers.length === 0) {
+			return true
+		}
+		return !filterHide(item, triggers)
+	})
 	// return only 10 results
 	return filtered.slice(0, limit)
 }
@@ -52,20 +58,28 @@ export const formatDate = (date: string, time: string, remaining: number) => {
 		return <span className={remaining === 0 ? 'line-through decoration-gray-500' : ''}>{format(new Date(datetimeStr), 'E, MMMM d')}</span>
 }
 
-export const findLimitCapacityActions = (triggers: any[]) => {
+export const findActionsByName = (triggers: any[], name: string) => {
 	// if there are no actions then we can return the item
 	if (triggers.length === 0) {
 		return []
 	}
 
 	// collect all the actions the triggers that have an action
-	// with a name of limitCapacity
+	// with a name of hide
 	return triggers.filter((trigger: any) => {
 		const actions = trigger.actions.filter((action: any) => {
-			return action.name === 'limitCapacity'
+			return action.name === name
 		})
 		return actions.length > 0
 	})
+}
+
+export const findHideActions = (triggers: any[]) => {
+	return findActionsByName(triggers, 'hide')
+}
+
+export const findLimitCapacityActions = (triggers: any[]) => {
+	return findActionsByName(triggers, 'limitCapacity')
 }
 
 export const checkCapacityConditions = (item: any, triggers: any[]) => {
@@ -103,8 +117,6 @@ export const checkLimitCapacityActions = (item: any, triggers: any[]) => {
 	// with a name of limitCapacity
 	const limitCapacityActions = findLimitCapacityActions(triggers)
 
-
-
 	// if there are no limitCapacity actions then we can return the item
 	if (limitCapacityActions.length === 0) {
 		return item
@@ -117,4 +129,51 @@ export const checkLimitCapacityActions = (item: any, triggers: any[]) => {
 	}
 
 	return item
+}
+
+export const checkHideConditions = (item: any, triggers: any[]) => {
+	// if there are no actions then we can return the item
+	if (triggers.length === 0) {
+		return item
+	}
+
+	const foundActions = triggers.filter((trigger: any) => {
+		// collect all the conditions that match
+			const conditions = trigger.conditions.filter((condition: any) => {
+			
+				switch (condition.name) {
+					case 'dayIs':
+						// get day of the week from item.date	
+						const day = new Date(item.date).getDay()
+						return condition.value.includes(day)
+				}	
+			})
+			
+			return (conditions.length === trigger.conditions.length && trigger.all)
+	})
+	return foundActions
+}
+
+export const filterHide = (item: any, triggers: any[]) => {
+	// if there are no actions then we can return the item
+	if (triggers.length === 0) {
+		return false
+	}
+
+	// collect all the actions the triggers that have an action
+	// with a name of hide
+	const hideActions = findHideActions(triggers)
+
+	// if there are no hide actions then we can return the item
+	if (hideActions.length === 0) {
+		return false
+	}
+	
+	const matches = checkHideConditions(item, hideActions)
+
+	if (matches.length === 1 && matches[0].actions.length > 0) {
+		return matches[0].actions[0].paths.includes(`tickets.timeslot.${item.time}`)
+	}
+	
+	return false
 }

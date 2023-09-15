@@ -19,13 +19,16 @@ const FormCard: React.FC<Props> = async ({ form, searchParams }) => {
 
 	const {qrcode,link } = searchParams
 	// get the form and inventory
-	const [formDetails, inventory] = await Promise.all([getForm(form.id), getInventory(form.id)])
+	const formDetails = await getForm(form.id)
 
 	const image = getImage(formDetails)
 	const text = getText(formDetails)
 	const eventType = getEventType(formDetails)
 	const eventDates = getEventDates(formDetails)
 	const triggers = getTriggers(formDetails)
+
+	// get inventory
+	const inventory = await getInventory(form.id, eventType)
 	const displayLink = link === "true" ? true : false
 	const displayQRCode = qrcode === "true" ? true : false
 	

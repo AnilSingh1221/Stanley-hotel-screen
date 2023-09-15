@@ -1,6 +1,11 @@
 import React from 'react';
 import ListItem from './list-item';
-import { checkLimitCapacityActions, filterInventory, formatDateTime } from './utils';
+import { 
+	checkLimitCapacityActions, 
+	filterInventory, 
+	formatDateTime,
+	filterHide,
+} from './utils';
 
 interface Props {
 	eventType: string
@@ -50,8 +55,8 @@ const Recurring:React.FC<Props> = ({eventType, inventory, timeZone, triggers}) =
 	if (eventType !== 'recurring') {
 		return null
 	}
-	
-	const filteredInventory = filterInventory(inventory, timeZone)
+		
+	const filteredInventory = filterInventory(inventory, timeZone, triggers)
 
 	if (filteredInventory.length === 0) {
 		return (

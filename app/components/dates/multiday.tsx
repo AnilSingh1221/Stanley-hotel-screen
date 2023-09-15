@@ -16,10 +16,6 @@ const Multiday:React.FC<Props> = ({eventDates, eventType, inventory, triggers}) 
 	if (eventType !== 'multiday') {
 		return null
 	}
-
-	
-	console.log("MultiDay", eventDates, inventory)
-
 	// Filter out actions as needed
 	inventory = inventory.filter((item: any) => {
 		return checkActions(item, triggers)
