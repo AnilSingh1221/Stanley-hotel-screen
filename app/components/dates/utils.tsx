@@ -105,7 +105,7 @@ export const checkCapacityConditions = (item: any, triggers: any[]) => {
 	return foundActions
 }
 
-const dateIs = (itemDate, conditionDate) => {
+const dateIs = (itemDate: string, conditionDate: string) => {
 	conditionDate = format(new Date(conditionDate), 'yyyy-MM-dd')
 	return conditionDate === itemDate
 }
