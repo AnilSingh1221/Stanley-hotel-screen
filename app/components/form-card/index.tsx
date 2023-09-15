@@ -56,6 +56,7 @@ const FormCard: React.FC<Props> = async ({ form, searchParams }) => {
 				eventType={eventType}
 				inventory={inventory}
 				timeZone={formDetails.timeZone}
+				triggers={triggers}
 				/>
 			
 			{ displayLink ? <Link link={`https://${formDetails.publishedPath}`} label={"Get Tickets"} /> : null }

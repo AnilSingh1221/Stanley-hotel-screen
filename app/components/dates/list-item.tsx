@@ -18,6 +18,7 @@ const ListItem:React.FC<Props> = ({label, remaining, type}) => {
 
 	return (
 		<li className="px-2 py-1.5">
+			{/* remaining: {remaining} */}
 			{formatLabel(label as string, remaining)} <Status remaining={remaining} type={type} />
 		</li>
 	)
