@@ -94,8 +94,7 @@ export const checkCapacityConditions = (item: any, triggers: any[]) => {
 			
 				switch (condition.name) {
 					case 'dateIs':
-						const conditionDate = format(new Date(condition.value), 'yyyy-MM-dd')
-						return conditionDate === item.date
+						return dateIs(item.date, condition.value)
 					case 'selectionIs':	
 						return condition.value.includes(item.time)
 				}	
@@ -106,6 +105,10 @@ export const checkCapacityConditions = (item: any, triggers: any[]) => {
 	return foundActions
 }
 
+const dateIs = (itemDate, conditionDate) => {
+	conditionDate = format(new Date(conditionDate), 'yyyy-MM-dd')
+	return conditionDate === itemDate
+}
 
 export const checkLimitCapacityActions = (item: any, triggers: any[]) => {
 	// if there are no actions then we can return the item
@@ -146,6 +149,8 @@ export const checkHideConditions = (item: any, triggers: any[]) => {
 						// get day of the week from item.date	
 						const day = new Date(item.date).getDay()
 						return condition.value.includes(day)
+					case 'dateIs':
+						return dateIs(item.date, condition.value)
 				}	
 			})
 			
