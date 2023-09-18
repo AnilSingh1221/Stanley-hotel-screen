@@ -2,9 +2,9 @@ import Image from "next/image";
 import FormCard from "./components/form-card";
 import { getForms } from "@/app/utils/api";
 
-// export const revalidate = 60
+export const revalidate = 60;
 // no cache
-export const revalidate = 0;
+// export const revalidate = 0;
 
 type Props = {
   searchParams: any;
