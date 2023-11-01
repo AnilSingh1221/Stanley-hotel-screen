@@ -18,7 +18,7 @@ const Status:React.FC<Props> = ({remaining, type}) => {
 	return (
 		<span className="font-bold"> - {" "}
 			{
-				remaining === 0 ? <span className="text-red-700 uppercase">sold out</span> : remaining < limit ? ' Only ' + remaining + ' tickets!' : ""
+				remaining === 0 ? <span className="text-red-700 uppercase">sold out</span> : remaining < limit ? ' Only ' + remaining + ' left!' : ""
 			}
 		</span>
 	)

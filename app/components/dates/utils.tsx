@@ -71,7 +71,7 @@ export const formatDateTime = (
 
   return (
     <span className={remaining === 0 ? "line-through decoration-gray-500" : ""}>
-      {format(new Date(datetimeStr), "E, MMMM d - h:mm a")}
+      {format(new Date(datetimeStr), "E, MMM. d - h:mm a")}
     </span>
   );
 };
