@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
 			<link rel="icon" href="/favicon.ico" sizes="any" />
-			<meta httpEquiv="refresh" content="30" />
+			<meta httpEquiv="refresh" content="120" />
 			
       <body className={lato.className} >{children}</body>
     </html>
