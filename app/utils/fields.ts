@@ -3,8 +3,8 @@ import defaultImage from '@/public/img/default.png'
 // getImage finds the first banner of with the fullWidthType of image
 export const getImage = (formDetails: any): string => {
 	const {header = { children: []}} = formDetails.fields
-
-	let banner = header.children.find((item: any) => item.type === 'banner' && item.attributes.fullWidthType === 'image')
+	
+	let banner = header.children.find((item: any) => item.type === 'banner') 
 	
 	if (banner?.attributes?.image) {
 	 return `https://cdn.uploads.webconnex.com/130981/${banner?.attributes?.image}`
