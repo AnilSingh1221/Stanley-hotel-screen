@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { format, isValid } from "date-fns";
 import { zonedTimeToUtc } from "date-fns-tz";
 import React from "react";
 
@@ -67,16 +67,25 @@ export const formatDateTime = (
   time: string,
   remaining: number,
 ) => {
-  const datetimeStr = date + " " + time + ":00";
-
+  
+  let datetimeStr = date + " " + time + ":00";
+  if (time === undefined) {
+    return formatDate(date, time, remaining);
+  }
+  
+  let formattedDate  = datetimeStr
+  if (isValid(new Date(datetimeStr))) {
+    formattedDate = format(new Date(datetimeStr), "E, MMM. d - h:mm a")
+  }
   return (
     <span className={remaining === 0 ? "line-through decoration-gray-500" : ""}>
-      {format(new Date(datetimeStr), "E, MMM. d - h:mm a")}
+      {formattedDate}
     </span>
   );
 };
 
 export const formatDate = (date: string, time: string, remaining: number) => {
+  
   const datetimeStr = date;
 
   return (
