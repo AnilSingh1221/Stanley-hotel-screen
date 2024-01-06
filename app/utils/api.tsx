@@ -1,4 +1,5 @@
 import { addDays, format } from "date-fns";
+import { zonedTimeToUtc } from 'date-fns-tz'
 
 export const headers = new Headers();
 headers.append("apiKey", process.env.API_KEY as string);
@@ -13,7 +14,7 @@ export const requestOptions = {
 
 export const getInventory = async (formId: string, eventType: string) => {
 	// get inventory for the next 5 days
-	const fromDate = new Date()
+	const fromDate = zonedTimeToUtc(new Date(), "America/Denver")
 	// five days from now
 	const toDate = addDays(fromDate, 5)
 	let params = '?limit=100'
@@ -44,7 +45,8 @@ export const getForm = async (formId: string) => {
 
 export const getForms = async (limit: number, formOrder: number[]) => {
 
-	const now = addDays(new Date(), 3)
+	const fromDate = zonedTimeToUtc(new Date(), "America/Denver")
+	const now = addDays(fromDate, 3)
 
 	const today = format(now, 'yyyy-MM-dd')
 	const url = `https://api.webconnex.com/v2/public/forms?product=ticketspice.com&pretty=true&sort=asc&status=open&datePublishedBefore=${today}&limit=1000`
